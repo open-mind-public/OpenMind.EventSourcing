@@ -1,0 +1,36 @@
+﻿### Variables
+@baseUrl = http://localhost:5161
+@customerId = 80b9bd59-5e5f-08de-2686-9f7f9f8527c2
+
+### Create Customer
+POST {{baseUrl}}/customer
+Content-Type: application/json
+
+{
+  "firstName": "John",
+  "lastName": "Doe",
+  "phoneNumber": "+1234567890",
+  "email": "john.doe@example.com",
+  "address": "123 Main St, City, Country",
+  "billingAddress": "123 Main St, City, Country",
+  "dateOfBirth": "1990-01-15"
+}
+
+### Get Customer by ID
+GET {{baseUrl}}/customer/{{customerId}}
+Accept: application/json
+
+### Update Customer Email
+POST {{baseUrl}}/customer/{{customerId}}/email
+Content-Type: application/json
+
+{
+  "email": "john.updated@example.com"
+}
+
+### Delete Customer
+DELETE {{baseUrl}}/customer/{{customerId}}
+
+### Health Check
+GET {{baseUrl}}/health
+Accept: application/json

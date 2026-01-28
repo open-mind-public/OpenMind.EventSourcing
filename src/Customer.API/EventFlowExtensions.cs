@@ -25,7 +25,8 @@ public static class EventFlowExtensions
                 .AddCommandHandlers(typeof(CreateCustomerCommandHandler).Assembly)
                 .AddSubscribers(typeof(CustomerDomainEventHandler).Assembly)
                 .AddQueryHandlers(typeof(GetCustomerByIdQueryHandler).Assembly)
-                .ConfigurePostgreSql(PostgreSqlConfiguration.New.SetConnectionString(builder.Configuration.GetConnectionString("DefaultConnection")))
+                .ConfigurePostgreSql(PostgreSqlConfiguration.New
+                    .SetConnectionString(builder.Configuration.GetConnectionString("DefaultConnection")))
                 .UsePostgreSqlEventStore()
                 .ConfigureEntityFramework(EntityFrameworkConfiguration.New)
                 .UseEntityFrameworkReadModel<CustomerReadModel, CustomerReadDbContext>()
